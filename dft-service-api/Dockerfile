@@ -8,7 +8,7 @@ RUN apt-get update && apt-get -y upgrade
 COPY build ./build
 RUN chmod +x /home/build/dft-service-api
 
-RUN mkdir projects
+RUN mkdir /home/projects
 
 EXPOSE 8000
 

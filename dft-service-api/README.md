@@ -3,12 +3,12 @@
 
 ## Pull
 ```
-docker pull --platform linux/amd64 python:3.11.2-buster
+docker pull python:3.11.2-buster --platform linux/amd64
 ```
 
 ## Build
 ```
-docker build --platform linux/amd64 -t dgbtechnologies/dft-service-api:latest .
+docker build --platform linux/amd64 -t dgbtechnologies/dft-service-api:latest . --no-cache
 ```
 
 ## Push

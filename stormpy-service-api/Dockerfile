@@ -8,6 +8,7 @@ RUN apt-get update && apt-get -y upgrade
 COPY build ./build
 RUN chmod +x /home/build/stormpy-service-api
 
+RUN mkdir /home/temp
 
 EXPOSE 8001
 

@@ -1,20 +1,29 @@
 version: "3.0"
 services:
-  # rabbitmq:
-  #   image: rabbitmq:3-management
-  #   container_name: rabbitmq
-  #   ports:
-  #     - 15672:15672
-  #     - 15674:15674
-  #   volumes:
-  #     - ./rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins
-    
-  # dft-service-ui:
-  #   platform: linux/amd64
-  #   image: dgbtechnologies/dft-service-ui:latest
-  #   container_name: dft-service-ui
-  #   ports:
-  #     - 8080:8080
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - 15672:15672
+      - 15674:15674
+    volumes:
+      - ./rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins
+  
+  stormpy-service-api:
+    platform: linux/amd64
+    image: dgbtechnologies/stormpy-service-api:latest
+    container_name: stormpy-service-api
+    ports:
+      - 8001:8001
+    environment:
+      RMQ_USERNAME: guest
+      RMQ_PASSWORD: guest
+      RMQ_VHOST: auto_task
+      RMQ_HOST: rabbitmq
+      RMQ_PORT: 5672
+      RMQ_VERIFICATION_QUEUE: verification
+      RMQ_EXPERIMENT_QUEUE: experiment
+      RMQ_APPROAXIMATION_QUEUE: approximation
 
   dft-service-api:
     platform: linux/amd64
@@ -29,18 +38,12 @@ services:
       STORMPY_SERVICE_PORT: 8001
       BACKUP_FILE: /home/projects/backup.safest
 
-  # stormpy-service-api:
-  #   platform: linux/amd64
-  #   image: dgbtechnologies/stormpy-service-api:latest
-  #   container_name: stormpy-service-api
-  #   ports:
-  #     - 8001:8001
-  #   environment:
-  #     RMQ_USERNAME: guest
-  #     RMQ_PASSWORD: guest
-  #     RMQ_VHOST: auto_task
-  #     RMQ_HOST: rabbitmq
-  #     RMQ_PORT: 5672
-  #     RMQ_VERIFICATION_QUEUE: verification
-  #     RMQ_EXPERIMENT_QUEUE: experiment
-  #     RMQ_APPROAXIMATION_QUEUE: approximation
+  dft-service-ui:
+    platform: linux/amd64
+    image: dgbtechnologies/dft-service-ui:latest
+    container_name: dft-service-ui
+    ports:
+      - 8080:8080
+
+  
+  

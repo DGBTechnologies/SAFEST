@@ -24,13 +24,6 @@ export WORK_DIR=$PWD
 export LICENSE_KEY="LICENSE_KEY_STRING"
 ```
 
-For Windows Command Prompt:
-```
-set WORK_DIR=%cd%
-set LICENSE_KEY="LICENSE_KEY_STRING"
-```
-
-
 Step 3: Run docker compose file
 
 ```

@@ -9,21 +9,38 @@ Make sure you have already installed docker on your computer and is currently ru
 
 Supported browsers: Google Chrome
 
-Step 1: Clone the repository
+Step 1: Clone the repository.
 
 ```
 git clone https://github.com/DGBTechnologies/SAFEST.git
 ```
 
-Step 2: Run Docker Compose File
+
+Step 2: Set the working directory and the license key.
+
+For Linux/Mac OS Terminal:
+```
+export WORK_DIR=$PWD
+export LICENSE_KEY="LICENSE_KEY_STRING"
+```
+
+For Windows Command Prompt:
+```
+set WORK_DIR=%cd%
+set LICENSE_KEY="LICENSE_KEY_STRING"
+```
+
+
+Step 3: Run docker compose file
 
 ```
 cd SAFEST
+docker-compose pull
 docker compose down
 docker compose up
 ```
 
-Step 3: Open Link 
+Step 4: Open link 
 
 - http://127.0.0.1:8080
 

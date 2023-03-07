@@ -32,11 +32,12 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - ./projects:/home/projects
+      - $WORK_DIR:/home/projects
     environment:
       STORMPY_SERVICE_HOST: stormpy-service-api
       STORMPY_SERVICE_PORT: 8001
       BACKUP_FILE: /home/projects/backup.safest
+      LICENSE_KEY: $LICENSE_KEY
 
   dft-service-ui:
     platform: linux/amd64

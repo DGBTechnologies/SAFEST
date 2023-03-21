@@ -1,13 +1,20 @@
-# SAFEST
+# SAFEST - the Static And dynamic Fault trEe analySis Tool
 
-A graphical interface to interact with storm dft. 
+SAFEST provides modelling and analysis of fault trees and supports both static fault trees (SFT) and dynamic fault trees (DFT).
+The tool uses the Storm-dft library of the [Storm modelchecker](https://www.stormchecker.org/) in its backend.
+
+## Dependencies
+Make sure that [Docker](https://www.docker.com/) is installed on your computer and is currently running.
+Docker is available for Windows, Linux and macOs.
+
+SAFEST is known to work with the following browsers:
+- Google Chrome (Recommended)
+- Firefox
+
+Follow the following steps to run SAFEST on [Linux and macOS](#running-safest-on-linux-and-macos) or on [Windows](#running-safest-on-windows).
 
 
-# To run the tool:
-
-Make sure you have already installed docker on your computer and is currently running. 
-
-Supported browsers: Google Chrome
+## Running SAFEST on Linux and macOS
 
 Step 1: Clone the repository.
 
@@ -15,16 +22,93 @@ Step 1: Clone the repository.
 git clone https://github.com/DGBTechnologies/SAFEST.git
 ```
 
-Step 2: Run docker compose file
+Step 2: Make sure that Docker is running.
 
+Step 3: Open a terminal and navigate into the SAFEST directory
 ```
-cd SAFEST
+cd path/to/SAFEST
+```
+
+Step 4: Download all necessary docker containers for SAFEST.
+This step might take a while.
+```
 docker-compose pull
+```
+
+Step 5: Start SAFEST
+```
 docker compose down
 docker compose up
 ```
 
-Step 3: Open link 
-
+Step 6: Open the link in a web-browser.
 - http://127.0.0.1:8080
 
+
+
+### To stop SAFEST 
+```
+cd path/to/SAFEST
+docker compose down
+```
+
+### To rerun SAFEST 
+
+Step 1:
+
+```
+cd path/to/SAFEST
+docker compose down
+docker compose up
+```
+
+Step 2: Open the link in a web-browser.
+- http://127.0.0.1:8080
+
+
+
+
+## Running SAFEST on Windows
+
+Step 1: Download the [repository](https://github.com/DGBTechnologies/SAFEST/archive/refs/heads/main.zip) and extract it to a folder.
+
+Step 2: Make sure that Docker is running.
+
+Step 3: Open the Windows command prompt and navigate into the SAFEST directory
+```
+cd path/to/SAFEST
+```
+
+Step 4: Download all necessary docker containers for SAFEST.
+This step might take a while.
+```
+docker-compose pull
+```
+
+Step 5: Start SAFEST
+```
+docker compose down
+docker compose up
+```
+
+Step 6: Open the link in a web-browser.
+- http://127.0.0.1:8080
+
+### To stop SAFEST 
+```
+cd path/to/SAFEST
+docker compose down
+```
+
+### To rerun SAFEST 
+
+Step 1:
+
+```
+cd path/to/SAFEST
+docker compose down
+docker compose up
+```
+
+Step 2: Open the link in a web-browser.
+- http://127.0.0.1:8080

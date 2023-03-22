@@ -3,8 +3,7 @@ FROM movesrwth/stormpy:ci-release
 USER root
 WORKDIR /home
 
-RUN apt-get update && apt-get -y upgrade
-RUN apt-get update && apt-get install -y wget
+RUN apt-get update && apt-get -y upgrade && apt-get -y install curl
 
 COPY build ./build
 RUN chmod +x /home/build/stormpy-service-api

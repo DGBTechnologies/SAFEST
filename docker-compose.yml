@@ -25,11 +25,13 @@ services:
       RMQ_VERIFICATION_QUEUE: verification
       RMQ_EXPERIMENT_QUEUE: experiment
       RMQ_APPROAXIMATION_QUEUE: approximation
-    # healthcheck:
-    #   test: wget --no-verbose --tries=1 --spider 0.0.0.0:8001 || bash -c 'kill -s 15 -1 && (sleep 10; kill -s 9 -1)'
-    #   interval: 30s
-    #   retries: 2
+    healthcheck:
+      test: curl -f 0.0.0.0:8001 || bash -c 'kill -s 15 -1 && (sleep 10; kill -s 9 -1)'
+      interval: 30s
+      retries: 2
     restart: always
+    depends_on:
+      - rabbitmq
     
   dft-service-api:
     platform: linux/amd64
@@ -43,11 +45,13 @@ services:
       STORMPY_SERVICE_HOST: stormpy-service-api
       STORMPY_SERVICE_PORT: 8001
       BACKUP_FOLDER: /home/projects/
-    # healthcheck:
-    #   test: wget --no-verbose --tries=1 --spider 0.0.0.0:8000 || bash -c 'kill -s 15 -1 && (sleep 10; kill -s 9 -1)'
-    #   interval: 30s
-    #   retries: 2
+    healthcheck:
+      test: curl -f 0.0.0.0:8000 || bash -c 'kill -s 15 -1 && (sleep 10; kill -s 9 -1)'
+      interval: 30s
+      retries: 2
     restart: always
+    depends_on:
+      - stormpy-service-api
 
   dft-service-ui:
     platform: linux/amd64
@@ -56,5 +60,7 @@ services:
     ports:
       - 8080:8080
     restart: always
+    depends_on:
+      - dft-service-api
 
 

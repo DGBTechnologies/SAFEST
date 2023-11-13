@@ -7,10 +7,10 @@ docker pull --platform linux/amd64 node:lts-buster-slim
 
 ## Build
 ```
-docker build --platform linux/amd64 -t dgbtechnologies/dft-service-ui:1.0.0 . --no-cache
+docker build --platform linux/amd64 -t dgbtechnologies/dft-service-ui:latest . --no-cache
 ```
 
 ## Push
 ```
-docker push dgbtechnologies/dft-service-ui:1.0.0
+docker push dgbtechnologies/dft-service-ui:latest
 ```

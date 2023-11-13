@@ -1,4 +1,5 @@
 # SAFEST - the Static And dynamic Fault trEe analySis Tool
+## Version: 0.0.0 (Beta)
 
 SAFEST provides modelling and analysis of fault trees and supports both static fault trees (SFT) and dynamic fault trees (DFT).
 The tool uses the Storm-dft library of the [Storm modelchecker](https://www.stormchecker.org/) in its backend.
@@ -15,6 +16,8 @@ Follow the following steps to run SAFEST on [Linux and macOS](#running-safest-on
 
 
 ## Running SAFEST on Linux and macOS
+<p style="color:red;">It should be noted that the new version of the SAFEST tool will not automatically upload the previous version's existing project. Before installing the new version, please export the existing project.</p>
+
 
 Step 1: Clone the repository.
 
@@ -70,7 +73,7 @@ Step 2: Open the link in a web-browser.
 
 ## Running SAFEST on Windows
 
-Step 1: Download the [repository](https://github.com/DGBTechnologies/SAFEST/archive/refs/heads/main.zip) and extract it to a folder.
+Step 1: Download the repository and extract it to a folder.
 
 Step 2: Make sure that Docker is running.
 

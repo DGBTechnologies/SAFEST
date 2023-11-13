@@ -12,10 +12,22 @@ services:
 
   stormpy-service-api:
     platform: linux/amd64
-    image: dgbtechnologies/stormpy-service-api:0.0.0
+    image: dgbtechnologies/stormpy-service-api:1.0.0
     container_name: stormpy-service-api
     ports:
       - 8001:8001
+    environment:
+      COMPUTE_SYMMETRIES: COMPUTE_SYMMETRIES_YES
+    restart: always
+
+  dft-service-api:
+    platform: linux/amd64
+    image: dgbtechnologies/dft-service-api:1.0.0
+    container_name: dft-service-api
+    ports:
+      - 8000:8000
+    volumes:
+      - ./projects:/home/projects
     environment:
       RMQ_USERNAME: guest
       RMQ_PASSWORD: guest
@@ -24,43 +36,20 @@ services:
       RMQ_PORT: 5672
       RMQ_VERIFICATION_QUEUE: verification
       RMQ_EXPERIMENT_QUEUE: experiment
-      RMQ_APPROAXIMATION_QUEUE: approximation
-    healthcheck:
-      test: curl -f 0.0.0.0:8001 || bash -c 'kill -s 15 -1 && (sleep 10; kill -s 9 -1)'
-      interval: 30s
-      retries: 2
-    restart: always
-    depends_on:
-      - rabbitmq
-    
-  dft-service-api:
-    platform: linux/amd64
-    image: dgbtechnologies/dft-service-api:0.0.0
-    container_name: dft-service-api
-    ports:
-      - 8000:8000
-    volumes:
-      - ./projects:/home/projects
-    environment:
+      RMQ_BOUNDED_VERIFICATION_QUEUE: bounded
+      RMQ_EVENT_TREE_ANALYSIS_QUEUE: ETA
+      ANALYSIS_LOGS: ANALYSIS_LOGS_YES
       STORMPY_SERVICE_HOST: stormpy-service-api
       STORMPY_SERVICE_PORT: 8001
       BACKUP_FOLDER: /home/projects/
-    healthcheck:
-      test: curl -f 0.0.0.0:8000 || bash -c 'kill -s 15 -1 && (sleep 10; kill -s 9 -1)'
-      interval: 30s
-      retries: 2
     restart: always
-    depends_on:
-      - stormpy-service-api
-
+    
   dft-service-ui:
     platform: linux/amd64
-    image: dgbtechnologies/dft-service-ui:0.0.0
+    image: dgbtechnologies/dft-service-ui:1.0.0
     container_name: dft-service-ui
     ports:
       - 8080:8080
     restart: always
     depends_on:
       - dft-service-api
-
-

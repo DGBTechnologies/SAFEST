@@ -1,5 +1,5 @@
 # SAFEST - the Static And dynamic Fault trEe analySis Tool
-## Version: Latest
+## Version: latest (dev not-fully-tested)
 
 SAFEST provides modelling and analysis of fault trees and supports both static fault trees (SFT) and dynamic fault trees (DFT).
 The tool uses the Storm-dft library of the [Storm modelchecker](https://www.stormchecker.org/) in its backend.

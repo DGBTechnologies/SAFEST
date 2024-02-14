@@ -12,7 +12,7 @@ services:
 
   stormpy-service-api:
     platform: linux/amd64
-    image: dgbtechnologies/stormpy-service-api:latest
+    image: dgbtechnologies/stormpy-service-api:1.0.0
     container_name: stormpy-service-api
     ports:
       - 8001:8001
@@ -22,7 +22,7 @@ services:
 
   dft-service-api:
     platform: linux/amd64
-    image: dgbtechnologies/dft-service-api:latest
+    image: dgbtechnologies/dft-service-api:1.0.0
     container_name: dft-service-api
     ports:
       - 8000:8000
@@ -46,7 +46,7 @@ services:
     
   dft-service-ui:
     platform: linux/amd64
-    image: dgbtechnologies/dft-service-ui:latest
+    image: dgbtechnologies/dft-service-ui:1.0.0
     container_name: dft-service-ui
     ports:
       - 8080:8080

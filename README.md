@@ -73,7 +73,7 @@ Step 2: Open the link in a web-browser.
 
 ## Running SAFEST on Windows
 
-Step 1: Download the repository and extract it to a folder.
+Step 1: Download the [repository](https://github.com/DGBTechnologies/SAFEST/archive/refs/heads/main.zip) and extract it to a folder.
 
 Step 2: Make sure that Docker is running.
 

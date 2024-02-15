@@ -5,12 +5,12 @@ SAFEST provides modelling and analysis of fault trees and supports both static f
 The tool uses the Storm-dft library of the [Storm modelchecker](https://www.stormchecker.org/) in its backend.
 
 ## Prerequisites
-[Docker](https://www.docker.com/) must be installed on your computer - Docker installation videos are available on youtube for [Windows](https://www.youtube.com/watch?v=ZyBBv1JmnWQ), [Linux](https://www.youtube.com/watch?v=5_EA3rBCXmU) and [macOS](https://www.youtube.com/watch?v=-EXlfSsP49A).
+1. [Docker](https://www.docker.com/) must be installed on your computer - Docker installation videos are available on youtube for [Windows](https://www.youtube.com/watch?v=ZyBBv1JmnWQ), [Linux](https://www.youtube.com/watch?v=5_EA3rBCXmU) and [macOS](https://www.youtube.com/watch?v=-EXlfSsP49A).
 
-Docker must be running – verify it by running the following command in a Terminal or Command Prompt(CMD).
-```
-docker info 
-```
+2. Docker must be running – verify it by running the following command in a Terminal or Command Prompt(CMD).
+    ```
+    docker info 
+    ```
 
 ## System Requirements
 OS: 64-bit Windows 10/11, Linux, MacOS\

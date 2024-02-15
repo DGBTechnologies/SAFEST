@@ -65,9 +65,9 @@ Step 2: Run install.bat file.
 
 
 ### Start
-Run start.bat file.
+Step 1: Run start.bat file.
 
-Open the link http://127.0.0.1:8080 in a browser window
+Step 2: Open the link http://127.0.0.1:8080 in a browser window
 
 ### Stop
 Run stop.bat file.

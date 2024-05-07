@@ -2,7 +2,7 @@
 
 ## Pull
 ```
-docker pull --platform linux/amd64 movesrwth/stormpy:ci-release
+docker pull --platform linux/amd64 movesrwth/stormpy:ci
 ```
 
 ## Build

@@ -1,4 +1,4 @@
-FROM movesrwth/stormpy:ci-release
+FROM movesrwth/stormpy:ci
 
 USER root
 WORKDIR /home

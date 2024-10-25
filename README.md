@@ -1,5 +1,5 @@
 # SAFEST - the Static And dynamic Fault trEe analySis Tool
-## Version: latest (dev not-fully-tested)
+## Version: 1.0.0
 
 SAFEST provides modelling and analysis of fault trees and supports both static fault trees (SFT) and dynamic fault trees (DFT).
 The tool uses the Storm-dft library of the [Storm modelchecker](https://www.stormchecker.org/) in its backend.
@@ -22,7 +22,7 @@ Browsers: Google Chrome (Recommended), Firefox
 
 ### Installation
 
-Step 1: Download the [zip](https://github.com/DGBTechnologies/SAFEST/archive/refs/heads/main.zip) file, and unzip it.
+Step 1: Download the [zip](https://github.com/DGBTechnologies/SAFEST/archive/refs/heads/1.0.0.zip) file, and unzip it.
 
 Step 2: To navigate to the folder, run the following command in the terminal.
 ```
@@ -59,15 +59,15 @@ sh stop.sh
 
 ### Installation
 
-Step 1: Download the [zip](https://github.com/DGBTechnologies/SAFEST/archive/refs/heads/main.zip) file, and unzip it.
+Step 1: Download the [zip](https://github.com/DGBTechnologies/SAFEST/archive/refs/heads/1.0.0.zip) file, and unzip it.
 
 Step 2: Run install.bat file.
 
 
 ### Start
-Run start.bat file.
+Step 1: Run start.bat file.
 
-Open the link http://127.0.0.1:8080 in a browser window
+Step 2: Open the link http://127.0.0.1:8080 in a browser window
 
 ### Stop
 Run stop.bat file.

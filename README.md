@@ -1,73 +1,117 @@
 # SAFEST - the Static And dynamic Fault trEe analySis Tool
-## Version: latest (dev not-fully-tested)
+## Version: 0.0.0 (Beta)
 
 SAFEST provides modelling and analysis of fault trees and supports both static fault trees (SFT) and dynamic fault trees (DFT).
 The tool uses the Storm-dft library of the [Storm modelchecker](https://www.stormchecker.org/) in its backend.
 
-## Prerequisites
-1. [Docker](https://www.docker.com/) must be installed on your computer - Docker installation videos are available on youtube for [Windows](https://www.youtube.com/watch?v=ZyBBv1JmnWQ), [Linux](https://www.youtube.com/watch?v=5_EA3rBCXmU) and [macOS](https://www.youtube.com/watch?v=-EXlfSsP49A).
+## Dependencies
+Make sure that [Docker](https://www.docker.com/) is installed on your computer and is currently running.
+Docker is available for Windows, Linux and macOs.
 
-2. Docker must be running – verify it by running the following command in a Terminal or Command Prompt(CMD).
-    ```
-    docker info 
-    ```
+SAFEST is known to work with the following browsers:
+- Google Chrome (Recommended)
+- Firefox
 
-## System Requirements
-OS: 64-bit Windows 10/11, Linux, MacOS\
-Memory: 8GB RAM (Recommended 16GB)\
-Storage: 15 GB available space\
-Browsers: Google Chrome (Recommended), Firefox
+Follow the following steps to run SAFEST on [Linux and macOS](#running-safest-on-linux-and-macos) or on [Windows](#running-safest-on-windows).
+
 
 ## Running SAFEST on Linux and macOS
+<p style="color:red;">It should be noted that the new version of the SAFEST tool will not automatically upload the previous version's existing project. Before installing the new version, please export the existing project.</p>
 
-### Installation
 
-Step 1: Download the [zip](https://github.com/DGBTechnologies/SAFEST/archive/refs/heads/main.zip) file, and unzip it.
+Step 1: Clone the repository.
 
-Step 2: To navigate to the folder, run the following command in the terminal.
 ```
-cd path_to_SAFEST
-```
-Step 3: To install, run the following command in the terminal.
-```
-sh install.sh
+git clone --branch 0.0.0 https://github.com/DGBTechnologies/SAFEST.git
 ```
 
-### Start
-Step 1: To navigate to the folder, run the following command in the terminal.
-```
-cd path_to_SAFEST
-```
-Step 2: To start, run the following command in the terminal.
-```
-sh start.sh
-```
-Step 3: Open the link http://127.0.0.1:8080 in a browser window
+Step 2: Make sure that Docker is running.
 
-### Stop
-Step 1: To navigate to the folder, run the following command in the terminal.
+Step 3: Open a terminal and navigate into the SAFEST directory
 ```
-cd path_to_SAFEST
+cd path/to/SAFEST
 ```
-Step 2: To stop, run the following command in the terminal.
+
+Step 4: Download all necessary docker containers for SAFEST.
+This step might take a while.
 ```
-sh stop.sh
+docker-compose pull
 ```
+
+Step 5: Start SAFEST
+```
+docker compose down
+docker compose up
+```
+
+Step 6: Open the link in a web-browser.
+- http://127.0.0.1:8080
+
+
+
+### To stop SAFEST 
+```
+cd path/to/SAFEST
+docker compose down
+```
+
+### To rerun SAFEST 
+
+Step 1:
+
+```
+cd path/to/SAFEST
+docker compose down
+docker compose up
+```
+
+Step 2: Open the link in a web-browser.
+- http://127.0.0.1:8080
+
+
+
 
 ## Running SAFEST on Windows
 
+Step 1: Download the repository and extract it to a folder.
 
-### Installation
+Step 2: Make sure that Docker is running.
 
-Step 1: Download the [zip](https://github.com/DGBTechnologies/SAFEST/archive/refs/heads/main.zip) file, and unzip it.
+Step 3: Open the Windows command prompt and navigate into the SAFEST directory
+```
+cd path/to/SAFEST
+```
 
-Step 2: Run install.bat file.
+Step 4: Download all necessary docker containers for SAFEST.
+This step might take a while.
+```
+docker-compose pull
+```
 
+Step 5: Start SAFEST
+```
+docker compose down
+docker compose up
+```
 
-### Start
-Run start.bat file.
+Step 6: Open the link in a web-browser.
+- http://127.0.0.1:8080
 
-Open the link http://127.0.0.1:8080 in a browser window
+### To stop SAFEST 
+```
+cd path/to/SAFEST
+docker compose down
+```
 
-### Stop
-Run stop.bat file.
+### To rerun SAFEST 
+
+Step 1:
+
+```
+cd path/to/SAFEST
+docker compose down
+docker compose up
+```
+
+Step 2: Open the link in a web-browser.
+- http://127.0.0.1:8080

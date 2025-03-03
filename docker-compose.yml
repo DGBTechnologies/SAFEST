@@ -34,7 +34,7 @@ services:
 
   dft-service-api:
     platform: linux/amd64
-    image: dgbtechnologies/dft-service-api:latest
+    image: dgbtechnologies/dft-service-api:test
     container_name: dft-service-api
     ports:
       - 8000:8000
@@ -66,7 +66,7 @@ services:
     
   dft-service-ui:
     platform: linux/amd64
-    image: dgbtechnologies/dft-service-ui:latest
+    image: dgbtechnologies/dft-service-ui:test
     container_name: dft-service-ui
     ports:
       - 8080:8080

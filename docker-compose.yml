@@ -24,7 +24,7 @@ services:
 
   stormpy-service-api:
     platform: linux/amd64
-    image: dgbtechnologies/stormpy-service-api:latest
+    image: dgbtechnologies/stormpy-service-api:test
     container_name: stormpy-service-api
     ports:
       - 8001:8001

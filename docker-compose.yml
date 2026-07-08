@@ -8,39 +8,33 @@ services:
     volumes:
       - ./rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins
     restart: always
-
+  
   mysql:
     image: mysql:8.0-bookworm
     platform: linux/amd64
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: safest
+      MYSQL_DATABASE: safest  # Create a default database named 'safest'
     ports:
-      - 3307:3306
+      - 3307:3306  # Expose MySQL on port 3306
     volumes:
       - ./mysql-db:/var/lib/mysql
     restart: always
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
 
   stormpy-service-api:
     platform: linux/amd64
-    image: dgbtechnologies/stormpy-service-api:3.0.0
+    image: dgbtechnologies/stormpy-service-api:ref
     container_name: stormpy-service-api
     ports:
       - 8001:8001
     environment:
       COMPUTE_SYMMETRIES: COMPUTE_SYMMETRIES_YES
     restart: always
-  
+
   dft-service-api:
     platform: linux/amd64
-    image: dgbtechnologies/dft-service-api:3.0.0
+    image: dgbtechnologies/dft-service-api:ref
     container_name: dft-service-api
     ports:
       - 8000:8000
@@ -61,24 +55,24 @@ services:
       STORMPY_SERVICE_HOST: stormpy-service-api
       STORMPY_SERVICE_PORT: 8001
       PROJECT_FILES: /home/project_files/
-      MYSQL_USERNAME : root
-      MYSQL_PASSWORD : root
-      MYSQL_HOST : mysql
-      MYSQL_PORT : 3306
-      MYSQL_DATABASE: safest
-    dns:
-      - 8.8.8.8
-      - 1.1.1.1
+      # MYSQL_USERNAME: admin
+      # MYSQL_PASSWORD: admin123
+      # MYSQL_HOST : database-1.cn6u6is2oimk.us-west-2.rds.amazonaws.com
+      # MYSQL_PORT : 3306
+      # MYSQL_DATABASE: safest
+      # BACKEND_API_IP: http://44.254.193.76:8000
     restart: always
     depends_on:
       - mysql
-
+    
   dft-service-ui:
     platform: linux/amd64
-    image: dgbtechnologies/dft-service-ui:3.0.0
+    image: dgbtechnologies/dft-service-ui:ref
     container_name: dft-service-ui
     ports:
       - 8080:8080
     restart: always
     depends_on:
       - dft-service-api
+
+  

@@ -61,10 +61,42 @@ services:
       # MYSQL_PORT : 3306
       # MYSQL_DATABASE: safest
       # BACKEND_API_IP: http://44.254.193.76:8000
+      BACKEND_API_IP: http://117.20.29.153:8000
+      EC2_SERVER_URL: http://117.20.29.153:8004
     restart: always
     depends_on:
       - mysql
-    
+
+  dft-analysis-api:
+    platform: linux/amd64
+    image: dgbtechnologies/dft-analysis-api:ref
+    container_name: dft-analysis-api
+    ports:
+      - 8002:8002
+    volumes:
+      - ./projects:/home/project_files
+    environment:
+      RMQ_USERNAME: guest
+      RMQ_PASSWORD: guest
+      RMQ_VHOST: auto_task
+      RMQ_HOST: rabbitmq
+      RMQ_PORT: 5672
+      RMQ_MANAGEMENT_PORT: 15672
+      RMQ_VERIFICATION_QUEUE: verification
+      RMQ_EXPERIMENT_QUEUE: experiment
+      RMQ_BOUNDED_VERIFICATION_QUEUE: bounded
+      RMQ_EVENT_TREE_ANALYSIS_QUEUE: ETA
+      ANALYSIS_LOGS: ANALYSIS_LOGS_YES
+      STORMPY_SERVICE_HOST: stormpy-service-api
+      STORMPY_SERVICE_PORT: 8001
+      PROJECT_FILES: /home/project_files/
+      BACKEND_API_IP: http://117.20.29.153:8000
+      EC2_SERVER_URL: http://117.20.29.153:8004
+    restart: always
+    depends_on:
+      - dft-service-api
+
+
   dft-service-ui:
     platform: linux/amd64
     image: dgbtechnologies/dft-service-ui:ref

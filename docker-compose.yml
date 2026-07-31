@@ -61,8 +61,6 @@ services:
       # MYSQL_PORT : 3306
       # MYSQL_DATABASE: safest
       # BACKEND_API_IP: http://44.254.193.76:8000
-      BACKEND_API_IP: http://117.20.29.153:8000
-      EC2_SERVER_URL: http://117.20.29.153:8004
     restart: always
     depends_on:
       - mysql
@@ -90,8 +88,6 @@ services:
       STORMPY_SERVICE_HOST: stormpy-service-api
       STORMPY_SERVICE_PORT: 8001
       PROJECT_FILES: /home/project_files/
-      BACKEND_API_IP: http://117.20.29.153:8000
-      EC2_SERVER_URL: http://117.20.29.153:8004
     restart: always
     depends_on:
       - dft-service-api

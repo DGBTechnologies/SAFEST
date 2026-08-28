@@ -6,10 +6,10 @@ WORKDIR /home
 RUN apt-get update && apt-get -y upgrade
 
 COPY build ./build
-RUN chmod +x /home/build/dft-service-api
+RUN chmod +x /home/build/dft-analysis-api
 
 RUN mkdir /home/projects
 
-EXPOSE 8000
+EXPOSE 8002
 
-CMD ["/home/build/dft-service-api"]
+CMD ["/home/build/dft-analysis-api"]

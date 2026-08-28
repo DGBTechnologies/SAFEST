@@ -8,25 +8,19 @@ services:
     volumes:
       - ./rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins
     restart: always
-
+  
   mysql:
     image: mysql:8.0-bookworm
     platform: linux/amd64
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: safest
+      MYSQL_DATABASE: safest  # Create a default database named 'safest'
     ports:
-      - 3307:3306
+      - 3307:3306  # Expose MySQL on port 3306
     volumes:
       - ./mysql-db:/var/lib/mysql
     restart: always
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
 
   stormpy-service-api:
     platform: linux/amd64
@@ -37,7 +31,7 @@ services:
     environment:
       COMPUTE_SYMMETRIES: COMPUTE_SYMMETRIES_YES
     restart: always
-  
+
   dft-service-api:
     platform: linux/amd64
     image: dgbtechnologies/dft-service-api:3.0.0
@@ -61,17 +55,37 @@ services:
       STORMPY_SERVICE_HOST: stormpy-service-api
       STORMPY_SERVICE_PORT: 8001
       PROJECT_FILES: /home/project_files/
-      MYSQL_USERNAME : root
-      MYSQL_PASSWORD : root
-      MYSQL_HOST : mysql
-      MYSQL_PORT : 3306
-      MYSQL_DATABASE: safest
-    dns:
-      - 8.8.8.8
-      - 1.1.1.1
     restart: always
     depends_on:
       - mysql
+
+  dft-analysis-api:
+    platform: linux/amd64
+    image: dgbtechnologies/dft-analysis-api:3.0.0
+    container_name: dft-analysis-api
+    ports:
+      - 8002:8002
+    volumes:
+      - ./projects:/home/project_files
+    environment:
+      RMQ_USERNAME: guest
+      RMQ_PASSWORD: guest
+      RMQ_VHOST: auto_task
+      RMQ_HOST: rabbitmq
+      RMQ_PORT: 5672
+      RMQ_MANAGEMENT_PORT: 15672
+      RMQ_VERIFICATION_QUEUE: verification
+      RMQ_EXPERIMENT_QUEUE: experiment
+      RMQ_BOUNDED_VERIFICATION_QUEUE: bounded
+      RMQ_EVENT_TREE_ANALYSIS_QUEUE: ETA
+      ANALYSIS_LOGS: ANALYSIS_LOGS_YES
+      STORMPY_SERVICE_HOST: stormpy-service-api
+      STORMPY_SERVICE_PORT: 8001
+      PROJECT_FILES: /home/project_files/
+    restart: always
+    depends_on:
+      - dft-service-api
+
 
   dft-service-ui:
     platform: linux/amd64
@@ -82,3 +96,5 @@ services:
     restart: always
     depends_on:
       - dft-service-api
+
+  
